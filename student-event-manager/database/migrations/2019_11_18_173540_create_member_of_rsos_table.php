@@ -14,7 +14,12 @@ class CreateMemberOfRsosTable extends Migration
     public function up()
     {
         Schema::create('member_of_rsos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('rso_id');
+            $table->primary(['id', 'rso_id']);
+            $table->foreign('rso_id')->references('rso_id')->on('rsos');
+            $table->foreign('id')->references('id')->on('users');
+        
             $table->timestamps();
         });
     }

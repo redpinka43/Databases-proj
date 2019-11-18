@@ -14,7 +14,12 @@ class CreateLocationAtsTable extends Migration
     public function up()
     {
         Schema::create('location_ats', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedBigInteger('lid');
+            $table->unsignedBigInteger('event_id');
+            $table->primary('lid');
+            $table->foreign('lid')->references('lid')->on('locations');
+            $table->foreign('event_id')->references('event_id')->on('events');
+
             $table->timestamps();
         });
     }

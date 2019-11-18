@@ -14,7 +14,8 @@ class CreatePublicEvsTable extends Migration
     public function up()
     {
         Schema::create('public_evs', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedBigInteger('event_id')->references('event_id')->on('events');
+            $table->primary('event_id');
             $table->timestamps();
         });
     }
