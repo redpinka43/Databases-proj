@@ -23,7 +23,7 @@ Models we've made:
 // });
 
 
-Route::view('/', 'home'); 
+Route::view('/', 'welcome'); 
 
 // Route::get('/hotels', 'HotelController@index'); 
 

@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <title>Laravel</title>
 
@@ -81,9 +82,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Student Event Manager
                 </div>
+                <div class="row justify-content-center">
+				    <div class="media-container-column col-lg-8 pb-3">
+					    <p>Welcome to the Student Event Manager! Join as a student from a university, and become involved in public, private, and university-specific RSO events. <a href="{{ route('register') }}">Register</a> now!</p>
+				    </div>
+			    </div>
+                
 
+
+<!--
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -94,6 +103,7 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+-->
             </div>
         </div>
     </body>

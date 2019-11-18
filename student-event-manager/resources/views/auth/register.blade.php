@@ -40,6 +40,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="uni_name" class="col-md-4 col-form-label text-md-right">{{ __('University') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="uni_name" type="text" class="form-control @error('uni_name') is-invalid @enderror" name="uni_name" value="{{ old('uni_name') }}" required autocomplete="uni_name" oninvalid="this.setCustomValidity('Please enter a valid university name. Use the full name.')" oninput="this.setCustomValidity('')">
+
+                                @error('uni_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
