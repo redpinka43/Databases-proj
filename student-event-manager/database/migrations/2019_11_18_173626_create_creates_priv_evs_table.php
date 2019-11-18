@@ -14,8 +14,11 @@ class CreateCreatesPrivEvsTable extends Migration
     public function up()
     {
         Schema::create('creates_priv_evs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('event_id');
+            $table->primary('id');
+            $table->foreign('id')->references('id')->on('admins');
+            $table->foreign('event_id')->references('event_id')->on('private_evs');
         });
     }
 

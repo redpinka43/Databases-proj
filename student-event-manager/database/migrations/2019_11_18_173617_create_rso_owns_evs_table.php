@@ -14,8 +14,11 @@ class CreateRsoOwnsEvsTable extends Migration
     public function up()
     {
         Schema::create('rso_owns_evs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('rso_id');
+            $table->unsignedBigInteger('event_id');
+            $table->primary('rso_id');
+            $table->foreign('rso_id')->references('rso_id')->on('rsos');
+            $table->foreign('event_id')->references('event_id')->on('events');
         });
     }
 

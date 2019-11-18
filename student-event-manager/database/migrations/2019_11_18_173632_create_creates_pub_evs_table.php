@@ -14,8 +14,12 @@ class CreateCreatesPubEvsTable extends Migration
     public function up()
     {
         Schema::create('creates_pub_evs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            
+            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('event_id');
+            $table->primary('id');
+            $table->foreign('id')->references('id')->on('super_admins');
+            $table->foreign('event_id')->references('event_id')->on('public_evs');
         });
     }
 

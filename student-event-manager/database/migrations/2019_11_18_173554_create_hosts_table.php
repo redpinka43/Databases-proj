@@ -14,8 +14,11 @@ class CreateHostsTable extends Migration
     public function up()
     {
         Schema::create('hosts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('uni_id');
+            $table->primary('event_id');
+            $table->foreign('event_id')->references('event_id')->on('events');
+            $table->foreign('uni_id')->references('id')->on('universities');
         });
     }
 
