@@ -16,6 +16,8 @@ class CreateRsosTable extends Migration
         Schema::create('rsos', function (Blueprint $table) {
             $table->bigIncrements('rso_id');
             $table->unsignedBigInteger('admin_id')->references('id')->on('admins');
+            $table->text('description');
+            $table->string('name');
         });
     }
 
