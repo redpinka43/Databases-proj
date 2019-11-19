@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuperAdminsTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateSuperAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('super_admins', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->references('id')->on('users');
+            $table->unsignedBigInteger('rso_id');
             $table->primary('id');
-            $table->timestamps();        
+            $table->foreign('rso_id')->references('rso_id')->on('rsos');    
         });
     }
 
@@ -27,6 +28,6 @@ class CreateSuperAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('super_admins');
+        Schema::dropIfExists('admins');
     }
 }

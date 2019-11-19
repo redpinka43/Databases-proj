@@ -11,35 +11,32 @@
 |
 */
 
-/*
-Models we've made:
-    PublicEvent
-
-
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
 Route::view('/', 'welcome'); 
+Route::get('/home', 'UniversityController@getUniName');
 
-// Route::get('/hotels', 'HotelController@index'); 
+// Rso pages
+Route::get('/rso', 'RsoController@index');
+Route::get('/rso/{id}', ['uses' => 'RsoController@getEvents']);
+Route::get('/rso/{rso_id}/create-event', ['uses' => 'RsoController@viewCreateEventPage']);
 
-// Route::get('/auth0/callback', '\Auth0\Login\Auth0Controller@callback' )->name('auth0-callback');
-// Route::get('/login', 'Auth\Auth0IndexController@login')->name('login');
-// Route::get('/logout', 'Auth\Auth0IndexController@logout')->name('logout')->middleware('auth');
+Route::resource('rso_join', 'RsoJoinController')->except('create');
+Route::resource('rso_leave', 'RsoLeaveController')->except('create');
+Route::get('/rso/{rso_id}/{event_id}', ['uses' => 'RsoController@getSingleEvent']);
+Route::resource('rso_events', 'RsoEventController')->except('create');
 
-Route::group(['prefix' => 'dashboard'], function() {
-    Route::view('/', 'dashboard/dashboard');
-    Route::get('public-events', 'PublicEventController@index');
-    Route::get('rso/create/{id}', 'RsoEventController@create');
-    Route::resource('rso', 'RsoEventController')->except('create');    
+// Public pages
+Route::get('public-events', 'EventController@getPublicEvents');
+Route::view('public-events/create-event', 'uni_events/create_public_event');
+Route::get('public-events/{event_id}', ['uses' => 'EventController@getSinglePublicEvent']);
+Route::resource('events', 'EventController')->except('create');
 
-//    Route::get('reservations/create/{id}', 'ReservationController@create');
-//    Route::resource('reservations', 'ReservationController')->except('create');
-});
+// Private event pages
+Route::get('{uni_id}/private-events', 'EventController@getPrivateEvents');
+
+
+
+
+
 
 /*
 Our pages:
@@ -56,9 +53,9 @@ Our pages:
 
 /dashboard/public-events - shows public events
 
-/dashboard/uni/events - shows school's private events, 
+/dashboard/private-events - shows school's private events, 
                 (opt. for super-user): 'create University event (public/private)'
-/dashboard/uni/events/{id} - display private event, if super-user can edit or delete
+/dashboard/private-events/{id} - display private event, if super-user can edit or delete
 
 /dashboard/create-rso - student can create new RSO
 /dashboard/rso/{id} - page for an rso
@@ -70,8 +67,8 @@ Our pages:
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');*/

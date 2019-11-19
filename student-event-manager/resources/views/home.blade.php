@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -14,7 +15,17 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>You are logged in!</p>
+
+                    <p>Welcome to {{ $uniName }}'s event manager! Explore events in the categories below.</p>
+                    <ul>
+                        <li><a class="nav-item nav-link" href="/public-events">Public events</a></li>  
+                        <!-- link = "/private-events" -->
+                        <li><a class="nav-item nav-link" href="/public-events">Private events</a></li>
+                        <li><a class="nav-item nav-link" href="/my-rso-events">My RSO events</a></li> 
+                        <li><a class="nav-item nav-link" href="/../rso">RSO Index</a></li>
+                    </ul>
+
                 </div>
             </div>
         </div>

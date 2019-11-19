@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Private_ev extends Model
 {
     public $timestamps = false;
+    protected $fillable = [
+        'event_id'
+    ];
 }
