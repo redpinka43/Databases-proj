@@ -23,6 +23,31 @@ class RsoController extends Controller
         return view('home.rso_index')->with('rsos', $rsos);
     }   
 
+	private function isUserEmailIsPartOfUniversity() {}
+	
+	// Create RSO
+	public function create_rso( Request $request)
+    {   
+		// First, make sure all user emails are from the same university
+		if ( !(isUserEmailIsPartOfUniversity($request->email_1, $request->uni_id) && 
+			   isUserEmailIsPartOfUniversity($request->email_2, $request->uni_id) && 
+			   isUserEmailIsPartOfUniversity($request->email_3, $request->uni_id) && 
+			   isUserEmailIsPartOfUniversity($request->email_4, $request->uni_id) && 
+			   isUserEmailIsPartOfUniversity($request->email_5, $request->uni_id) ) {
+			
+			return redirect('/create-rso-try-again');
+		}
+
+		// Create new RSO, with the user as the admin
+		Rso::create([
+			'admin_id' => $request->user->id,
+			'name' => $request->name,
+			'description' => $request->description
+		]);
+
+        return redirect('/rso'); 
+    }
+
     // Used for rso_page
     public function getEvents($id, Request $request){
 
