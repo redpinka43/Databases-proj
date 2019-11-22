@@ -15,6 +15,7 @@ Route::view('/', 'welcome');
 Route::get('/home', 'UniversityController@getUniName');
 
 // Rso pages
+Route::view('/create-rso', 'home/create_rso'); 
 Route::get('/rso', 'RsoController@index');
 Route::get('/rso/{id}', ['uses' => 'RsoController@getEvents']);
 Route::get('/rso/{rso_id}/create-event', ['uses' => 'RsoController@viewCreateEventPage']);

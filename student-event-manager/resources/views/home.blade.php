@@ -24,7 +24,10 @@
                         <li><a class="nav-item nav-link" href="/public-events">Private events</a></li>
                         <li><a class="nav-item nav-link" href="/my-rso-events">My RSO events</a></li> 
                         <li><a class="nav-item nav-link" href="/../rso">RSO Index</a></li>
+								<li><a class="nav-item nav-link" href="create-rso">Create RSO</a></li>
                     </ul>
+
+						 
 
                 </div>
             </div>
